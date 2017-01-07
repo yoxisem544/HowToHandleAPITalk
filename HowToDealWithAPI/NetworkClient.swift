@@ -9,14 +9,18 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import PromiseKit
 
 protocol NetworkClientType {
-    func makeRequest<Request: NetworkRequest>(networkRequest: Request, callback: @escaping (Data?, Error?) -> Void)
+    func makeRequest<Request: NetworkRequest>(networkRequest: Request) -> Promise<Data>
 }
 
 struct NetworkClient : NetworkClientType {
     
-    func makeRequest<Request : NetworkRequest>(networkRequest: Request, callback: @escaping (Data?, Error?) -> Void) {
+    func makeRequest<Request : NetworkRequest>(networkRequest: Request) -> Promise<Data> {
+        
+        let (promise, fulfill, reject) = Promise<Data>.pending()
+        
         request(networkRequest.url,
                 method: networkRequest.method,
                 parameters: networkRequest.parameters,
@@ -25,34 +29,14 @@ struct NetworkClient : NetworkClientType {
         .validate()
         .response(completionHandler: { response in
             if let data = response.data, response.error == nil {
-                callback(data, nil)
-            } else {
+                fulfill(data)
+            } else if let error = response.error {
                 // error
-                callback(nil, response.error)
+                reject(error)
             }
         })
-    }
-    
-    func makeRequest<Response: JSONDecodable>(url: String,
-                     method: HTTPMethod,
-                     parameters: Parameters,
-                     callback: @escaping (Response?, Error?) -> Void) {
-        request(url,
-                method: method,
-                parameters: parameters,
-                encoding: JSONEncoding.default,
-                headers: nil)
-        .validate()
-        .response(completionHandler: { response in
-            if let data = response.data, response.error == nil {
-                let json = JSON(data: data)
-                let _response = Response(json: json)
-                callback(_response, nil)
-            } else {
-                // error
-                callback(nil, response.error)
-            }
-        })
+        
+        return promise
     }
     
 }

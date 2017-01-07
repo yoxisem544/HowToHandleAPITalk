@@ -20,14 +20,13 @@ class ViewController: UIViewController {
         
         // make a request
         let fetchUser = FetchUser()
-        fetchUser.perform(username: "yoxisem544") { (user, error) in
-            if let user = user, error == nil {
-                self.label.text = "Username: " + user.name
-            } else {
-                // error
-                self.label.text = "Request failed"
-            }
-        }
+        fetchUser
+        .perform(username: "yoxisem544")
+        .then(execute: { user in
+            self.label.text = "Username: " + user.name
+        }).catch(execute: { _ in
+            self.label.text = "Request failed"
+        })
     }
 
     override func didReceiveMemoryWarning() {

@@ -9,6 +9,10 @@
 import Foundation
 import SwiftyJSON
 
+enum JSONDecodableError : Error {
+    case parseError
+}
+
 protocol JSONDecodable {
-    init?(json: JSON)
+    init(json: JSON) throws
 }
