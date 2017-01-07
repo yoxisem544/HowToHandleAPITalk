@@ -10,9 +10,34 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-struct NetworkClient {
+protocol NetworkClientType {
+    func fetchUsername(callback: @escaping (_ name: String?, _ error: Error?) -> Void)
+    func makeRequest(url: String,
+                     method: HTTPMethod,
+                     parameters: Parameters,
+                     callback: @escaping (_ json: JSON?, _ error: Error?) -> Void)
+}
+
+struct NetworkClient : NetworkClientType {
     
-    static func makeRequest(url: String,
+    func fetchUsername(callback: @escaping (String?, Error?) -> Void) {
+        let url = "http://httpbin.org/post"
+        let params = ["name": "yoxisem544"]
+        
+        makeRequest(url: url,
+                    method: .post,
+                    parameters: params,
+        callback: { json, error in
+            if let json = json, error == nil {
+                callback(json["json"]["name"].string, nil)
+            } else {
+                // error
+                callback(nil, error)
+            }
+        })
+    }
+    
+    func makeRequest(url: String,
                             method: HTTPMethod,
                             parameters: Parameters,
                             callback: @escaping (_ json: JSON?, _ error: Error?) -> Void) {
