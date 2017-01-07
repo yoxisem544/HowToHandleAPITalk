@@ -23,8 +23,13 @@ class ViewController: UIViewController {
         let params: [String : Any] = ["name": "yoxisem544"]
         
         let networkClient = NetworkClient()
-        networkClient.makeRequest(url: url, method: HTTPMethod.post, parameters: params, callback: { (user: User?, errro: Error?) in
-            
+        networkClient.makeRequest(url: url, method: HTTPMethod.post, parameters: params, callback: { (user: User?, error: Error?) in
+            if let user = user, error == nil {
+                self.label.text = "Username: " + user.name
+            } else {
+                // error
+                self.label.text = "Request failed"
+            }
         })
     }
 
