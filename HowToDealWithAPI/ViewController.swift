@@ -19,10 +19,13 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         // make a request
+        let url = "http://httpbin.org/post"
+        let params: [String : Any] = ["name": "yoxisem544"]
+        
         let networkClient = NetworkClient()
-        networkClient.fetchUsername(callback: { (name, error) in
-            if let name = name, error == nil {
-                self.label.text = "Username: " + name
+        networkClient.makeRequest(url: url, method: HTTPMethod.post, parameters: params, callback: { user, error in
+            if let user = user, error == nil {
+                self.label.text = "Username: " + user.name
             } else {
                 // error
                 self.label.text = "Request failed"

@@ -16,6 +16,8 @@
 		638498571E21224900A9EFCC /* HowToDealWithAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638498561E21224900A9EFCC /* HowToDealWithAPITests.swift */; };
 		638498621E21224900A9EFCC /* HowToDealWithAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638498611E21224900A9EFCC /* HowToDealWithAPIUITests.swift */; };
 		638498701E21276700A9EFCC /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6384986F1E21276700A9EFCC /* NetworkClient.swift */; };
+		638498721E212BCA00A9EFCC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638498711E212BCA00A9EFCC /* User.swift */; };
+		638498741E212BDE00A9EFCC /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638498731E212BDE00A9EFCC /* JSONDecodable.swift */; };
 		A6FA59E548E811D063D26C34 /* Pods_HowToDealWithAPITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44CF48065C8CCC14BD903D8 /* Pods_HowToDealWithAPITests.framework */; };
 		FC58F9E2E12918E47916C15F /* Pods_HowToDealWithAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5B3916B57DD47BAA1B6D65 /* Pods_HowToDealWithAPI.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +56,8 @@
 		638498611E21224900A9EFCC /* HowToDealWithAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToDealWithAPIUITests.swift; sourceTree = "<group>"; };
 		638498631E21224900A9EFCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6384986F1E21276700A9EFCC /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		638498711E212BCA00A9EFCC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		638498731E212BDE00A9EFCC /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
 		AC807160ED4DF271C66FE28F /* Pods-HowToDealWithAPITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowToDealWithAPITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HowToDealWithAPITests/Pods-HowToDealWithAPITests.release.xcconfig"; sourceTree = "<group>"; };
 		B11E32B58F983B4F4485CC45 /* Pods-HowToDealWithAPIUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowToDealWithAPIUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HowToDealWithAPIUITests/Pods-HowToDealWithAPIUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CFD919F151BFEB72A229AD2A /* Pods-HowToDealWithAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowToDealWithAPI.release.xcconfig"; path = "Pods/Target Support Files/Pods-HowToDealWithAPI/Pods-HowToDealWithAPI.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 				638498411E21224900A9EFCC /* AppDelegate.swift */,
 				638498431E21224900A9EFCC /* ViewController.swift */,
 				6384986F1E21276700A9EFCC /* NetworkClient.swift */,
+				638498711E212BCA00A9EFCC /* User.swift */,
+				638498731E212BDE00A9EFCC /* JSONDecodable.swift */,
 				638498451E21224900A9EFCC /* Main.storyboard */,
 				638498481E21224900A9EFCC /* Assets.xcassets */,
 				6384984A1E21224900A9EFCC /* LaunchScreen.storyboard */,
@@ -450,6 +456,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				638498721E212BCA00A9EFCC /* User.swift in Sources */,
+				638498741E212BDE00A9EFCC /* JSONDecodable.swift in Sources */,
 				638498441E21224900A9EFCC /* ViewController.swift in Sources */,
 				638498421E21224900A9EFCC /* AppDelegate.swift in Sources */,
 				638498701E21276700A9EFCC /* NetworkClient.swift in Sources */,
