@@ -21,18 +21,18 @@ class ViewController: UIViewController {
         let url = "http://httpbin.org/post"
         let params = ["name": "yoxisem544"]
         
-        // make a request        
-        request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil)
-        .validate()
-        .response { (response) in
-            if let data = response.data, response.error == nil {
-                let json = JSON(data: data)
+        // make a request
+        NetworkClient.makeRequest(url: url,
+                                  method: .post,
+                                  parameters: params,
+        callback: ({ (json, error) in
+            if let json = json, error == nil {
                 self.label.text = "Username: " + json["json"]["name"].stringValue
             } else {
                 // error
                 self.label.text = "Request failed"
             }
-        }
+        }))
     }
 
     override func didReceiveMemoryWarning() {
